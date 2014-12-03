@@ -80,23 +80,26 @@ Page: <?php print $title ?>
     <div id="header"><div class="section clearfix">
 
       <?php if ($logo): ?>
-        <?php print "logo: " . $logo; ?><br/>
+
         <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
           <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
         </a>
       <?php endif; ?>
 
       <?php if ($site_name || $site_slogan): ?>
-        <?php print "<br/>site_name: " . $site_name . "<br/>site_slogan: " . $site_slogan; ?><br/>
-        <div id="name-and-slogan">
+          <div id="name-and-slogan" class="col-sm-12 col-offset-4">
           <?php if ($site_name): ?>
             <?php if ($title): ?>
-              <div id="site-name"><strong>
-                <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
+              <div id="site-name">Site name: <strong>
+                <a href="<?php print $front_page; ?>"
+                  title="<?php print t('Home'); ?>"
+                  rel="home"><span><?php print $site_name; ?></span></a>
               </strong></div>
             <?php else: /* Use h1 when the content title is empty */ ?>
               <h1 id="site-name">
-                <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
+                Site name:<a href="<?php print $front_page; ?>"
+                  title="<?php print t('Home'); ?>" rel="home"><span>
+                    Site name:<?php print $site_name; ?></span></a>
               </h1>
             <?php endif; ?>
           <?php endif; ?>
@@ -106,27 +109,23 @@ Page: <?php print $title ?>
           <?php endif; ?>
         </div> <!-- /#name-and-slogan -->
       <?php endif; ?>
-
+<div id="page-header" class="col-sm-12">
+  page['header']:
       <?php print render($page['header']); ?>
+</div>
 
     </div></div> <!-- /.section, /#header -->
 
-    <?php if ($main_menu || $secondary_menu): ?>
-      <div id="navigation"><div class="section">
-        <?php print theme('links__system_main_menu', array('links' => $main_menu, 'attributes' => array('id' => 'main-menu', 'class' => array('links', 'inline', 'clearfix')), 'heading' => t('Main menu'))); ?>
-        <?php print theme('links__system_secondary_menu', array('links' => $secondary_menu, 'attributes' => array('id' => 'secondary-menu', 'class' => array('links', 'inline', 'clearfix')), 'heading' => t('Secondary menu'))); ?>
-      </div></div> <!-- /.section, /#navigation -->
-    <?php endif; ?>
 
-    <?php if ($breadcrumb): ?>
-      <div id="breadcrumb"><?php print $breadcrumb; ?></div>
-    <?php endif; ?>
+
 
     <?php print $messages; ?>
 
     <div id="main-wrapper"><div id="main" class="clearfix">
 
-      <div id="content" class="col-sm-6 col-sm-push-3 column">col-sm-6<div class="section">
+      <div id="content" class="col-sm-6 col-sm-push-3 column ">
+        <div class="centered">&lt;-- col-sm-6 --&gt;</div>
+        <div class="section">
         <?php if ($page['highlighted']): ?><div id="highlighted"><?php print render($page['highlighted']); ?></div><?php endif; ?>
         <a id="main-content"></a>
         <?php print render($title_prefix); ?>
@@ -140,13 +139,17 @@ Page: <?php print $title ?>
       </div></div> <!-- /.section, /#content -->
 
       <?php if ($page['sidebar_first']): ?>
-        <div id="sidebar-first" class="col-sm-3 col-sm-pull-6 column sidebar">col-sm-3<div class="section">
+        <div id="sidebar-first" class="col-sm-3 col-sm-pull-6 column sidebar">
+          <div class="centered">&lt;-- col-sm-3 --&gt;</div>
+          <div class="section">
           <?php print render($page['sidebar_first']); ?>
         </div></div> <!-- /.section, /#sidebar-first -->
       <?php endif; ?>
 
       <?php if ($page['sidebar_second']): ?>
-        <div id="sidebar-second" class="col-sm-3 column sidebar"><div class="section">
+        <div id="sidebar-second" class="col-sm-3 column sidebar">
+          <div class="centered">&lt;-- col-sm-3 --&gt;</div>
+          <div class="section">
           <?php print render($page['sidebar_second']); ?>
         </div></div> <!-- /.section, /#sidebar-second -->
       <?php endif; ?>
@@ -160,3 +163,9 @@ Page: <?php print $title ?>
   </div></div> <!-- /#page, /#page-wrapper -->
 </div><!-- id="page-tpl-inner" -->
 </div><!-- id="page-tpl-outer" -->
+
+<?php print "<br/>site_name: " . $site_name . "<br/>site_slogan: " . $site_slogan; ?><br/>
+<?php print "logo: " . $logo; ?><br/>
+<?php if ($breadcrumb): ?>
+  <span id="breadcrumb">Breadcrumb: <?php print $breadcrumb; ?></span>
+<?php endif; ?>

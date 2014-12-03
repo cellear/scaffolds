@@ -56,3 +56,24 @@ body {
   background: #FFFFFF;
   padding: 5px;
 }
+
+#breadcrumb{
+  border: 1px blue dotted;
+}
+
+#name-and-slogan {
+  border: 1px red dotted;
+  background: #DDDDDD;
+  padding: 5px;
+}
+
+#page-header {
+  clear: both;
+  border: 1px red dotted;
+  background: #FFFFCC;
+  padding: 5px;
+}
+
+.centered {
+  text-align:center;
+}
